@@ -3,7 +3,7 @@
  */
 import React, { PureComponent } from 'react';
 import { View, Modal, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import * as Animatable from 'react-native-animatable';
+import { View as ViewAnimatable } from 'react-native-animatable';
 import { modalMenuManager } from './modalMenuManager';
 
 class ModalMenu extends PureComponent {
@@ -65,11 +65,11 @@ class ModalMenu extends PureComponent {
         return (
             <Modal animationType={type} transparent={transparent} visible={visible} onRequestClose={() => {}}>
                 <TouchableOpacity onPress={this.resetState} style={[styles.modalBackDrop, { backgroundColor, }]} />
-                <Animatable.View style={styles.optionsContainer} animation="slideInUp" useNativeDriver duration={700}>
+                <ViewAnimatable style={styles.optionsContainer} animation="slideInUp" useNativeDriver duration={700}>
                     {options.map(item => (
                         <MenuField key={item.id} cb={this.handleSelect} item={item} selected={select === item.value} />
                     ))}
-                </Animatable.View>
+                </ViewAnimatable>
             </Modal>
         );
     }
